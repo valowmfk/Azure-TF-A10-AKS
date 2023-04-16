@@ -21,13 +21,13 @@
 variable "resource_group_name" {
   type = string
   description = "Resource Group name in Microsoft Azure"
-  default = "A10CloudDemoRG"
+  default = "####"
 }
 
 variable "prod_resource_group_name" {
   type = string
   description = "Storage Account Resource Group Name"
-  default = "a10se-prod-rg"
+  default = "####"
 }
 
 variable "location" {
@@ -39,7 +39,7 @@ variable "location" {
 variable "cluster_name" {
   type = string
   description = "AKS name in Microsoft Azure"
-  default = "A10CloudDemoCluster"
+  default = "####"
 }
 
 variable "kubernetes_version" {
@@ -68,7 +68,7 @@ variable "project" {
   description = "A10 Cloud Demo"
   # description = "Name of the project deployment."
   type = string
-  default = "A10CloudDemo"
+  default = "####"
 }
 variable "azs" {
   description = "The number of AZs."
@@ -78,10 +78,10 @@ variable "azs" {
 variable "vth_admin_user" {
   description = "A10 vthunder Admin username"
   type = string
-  default = "seclouddemo"
+  default = "####"
 }
 variable "vth_admin_pass" {
   description = "A10 vThunder Admin Password"
   type = string
-  default = "aNetw0rks!(10)"
+  default = "####"
 }

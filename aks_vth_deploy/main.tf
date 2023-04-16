@@ -5,10 +5,10 @@ terraform {
   required_version = ">= 0.12"
   
   backend "azurerm" {
-    resource_group_name  = "a10se-prod-rg"
-    storage_account_name = "a10setfhdd"
-    container_name       = "core-tfstate"
-    key                  = "core.secloud.tfstate"
+    resource_group_name  = "####"
+    storage_account_name = "####"
+    container_name       = "####"
+    key                  = "####"
   }
 }
 #
@@ -16,12 +16,12 @@ terraform {
 #
 # Get existing Key Vault
 data "azurerm_key_vault" "kv" {
-  name                = "A10SECloudKeyVault"
-  resource_group_name = "a10se-prod-rg"
+  name                = "####"
+  resource_group_name = "####"
 }
 # # Get existing Key
 data "azurerm_key_vault_key" "ssh_key" {
-  name         = "Azure-SE-Demo-Key"
+  name         = "####"
   key_vault_id = data.azurerm_key_vault.kv.id
 }
 
