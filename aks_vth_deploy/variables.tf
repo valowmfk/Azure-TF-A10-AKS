@@ -1,22 +1,22 @@
 # variable "subscription_id" {
 #     description = "Azure Tenant Subscription ID"
 #     type = string
-#     default = "b0cdab2f-abd4-43ae-a3d2-f0b7afd8e52e"
+#     default = "####"
 # }
 # variable "client_id" {
 #     description = "Service Principal App ID"
 #     type = string
-#     default = "cc884e38-67da-client-id"
+#     default = "####"
 # }
 # variable "client_secret" {
 #     description = "Service Principal Password"
 #     type = string
-#     default = "3t.8Q~C31mf-client-secret"
+#     default = "####"
 # }
 # variable "tenant_id" {
 #     description = "Azure Tenant ID"
 #     type = string
-#     default = "91d27ab9-8c5e-41d4-82e8-3d1bf81fcb2f"
+#     default = "####"
 # }
 variable "resource_group_name" {
   type = string
