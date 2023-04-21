@@ -14,3 +14,4 @@ Azure CLI configuration prerequisists must be met. Once the environment is deplo
 az aks get-credentials --resource-group !!!name!!! --name !!!name!!! --admin
 
 Please contact seclouddemo@a10networks.com with any questions.
+'<value>'
