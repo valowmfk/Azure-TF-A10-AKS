@@ -47,7 +47,7 @@ resource "thunder_virtual_server" "ws-vip" {
 resource "thunder_glm" "glm1" {
   use_mgmt_port   = 1
   enable_requests = 1
-  token           = "A10ffe1ad1a1"
+  token           = "####"
    depends_on = [
     thunder_ip_dns_primary.dns1
   ]
