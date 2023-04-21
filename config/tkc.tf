@@ -1,17 +1,13 @@
 #
 # TKC Demo
 #
+#  A10 Networks, Inc.
 #  Apache v2.0 License applies.
-#  April 2023
+#  June, 2021
 #
-
-# data "azurerm_kubernetes_cluster" "aks" {
-#   name = azurerm_kubernetes_cluster.aks.A10CloudDemoCluster-aks
-# }
 
 provider "kubernetes" {
   config_path = "~/.kube/config"
-# host = data.azurerm_kubernetes_cluster.aks.endpoint
 }
 #------------------------------------------------------------------#
 resource "kubernetes_namespace" "cyan" {
@@ -24,35 +20,19 @@ resource "kubernetes_namespace" "cyan" {
 }
 
 #------------------------------------------------------------------#
-# resource "kubernetes_cluster_role" "secret-reader" {
-#   metadata {
-#     name = "secret-reader"
-#   }
-#   rule {
-#     api_groups = [""]
-#     resources = ["secrets"]
-#     verbs = ["get", "watch", "list"]
-#   }
-# }
-
-#------------------------------------------------------------------#
 resource "kubernetes_cluster_role_binding" "rbac" {
   metadata {
     name = "th-secret-rbac"
   }
   subject {
     kind = "ServiceAccount"
-    # kind = "Group"
-    # name = "a10cloudplatform"
     name = "default"
-    # name = "clusterAdmin_A10CloudDemoRG_A10CloudDemoCluster-aks"
     namespace = kubernetes_namespace.cyan.metadata[0].name
   }
   role_ref {
     api_group = "rbac.authorization.k8s.io"
     kind = "ClusterRole"
     name = "cluster-admin"
-    # name = "secret-reader"
   }
 }
  
@@ -129,7 +109,7 @@ resource "kubernetes_config_map" "ws-index" {
                 }
                 div.disp {
                     display: table;
-                    background: #D8FEFC;
+                    background: #89c4ff;
                     padding: 20px 20px 20px 20px;
                     border: 2px black;
                     border-radius: 12px;
@@ -181,7 +161,7 @@ resource "kubernetes_config_map" "ws-index" {
             <div class="disp">
                 <br>
                 <h2>A10 Webserver Demo Page</h2>
-                <p><span>This is a test web page running on an AWS EKS Cluster.</span></p>
+                <p><span>This is a test web page running on an Azure AKS Cluster.</span></p>
                 <p><span>Server Name:</span> <span>server_hostname</span></p>
                 <p><span>Server Address:</span> <span>server_address</span></p>
                 <p><span>UA:</span> <span>client_browser</span></p>
@@ -297,15 +277,15 @@ resource "kubernetes_ingress_v1" "tkcIngress" {
     namespace = kubernetes_namespace.cyan.metadata[0].name
     annotations = {
       "kubernetes.io/ingress.class" = "a10-ext"
-      "acos.a10networks.com/health-monitors" = "[{\"name\":\"ws-mon\", \"port\":\"80\",\"type\":\"http\"}]"
+      "acos.a10networks.com/health-monitors" = "[{\"name\":\"ws-mon\", \"port\":\"80\",\"type\":\"tcp\"}]"
       "webserver-svc.acos.a10networks.com/service-group" = "{\"name\":\"ws-sg\",\"protocol\":\"tcp\",\"monitor\":\"ws-mon\",\"disableMonitor\":false}"
       "acos.a10networks.com/virtual-server" = "{\"name\":\"ws-vip\",\"vip\":\"${var.thunder_vip}\"}"
-      "acos.a10networks.com/virtual-ports" = "[{\"port\":\"80\",\"protocol\":\"http\",\"http2\":false,\"snat\":true}]"
+      "acos.a10networks.com/virtual-ports" = "[{\"port\":\"80\",\"protocol\":\"tcp\",\"http2\":false,\"snat\":true}]"
     }
   }
   spec {
     rule {
-      host = "a10cloudplatform.com"
+      host = "<your values here>" # Example: "a10cloudplatform.com"
       http {
         path {
           path = "/"

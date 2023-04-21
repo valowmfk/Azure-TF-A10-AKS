@@ -4,34 +4,52 @@
 #   content      = azurerm_kubernetes_cluster.cluster.kube_config_raw
 # }
 
-# output "resource_group_name" {
-#   value = azurerm_resource_group.rg.name
-# }
+#
+# Generate outputs to display information once apply is complete
+#
 
-# output "kubernetes_cluster_name" {
-#   value = azurerm_kubernetes_cluster.cluster.aks
-# }
+output "public_ip_address_id" {
+  value = azurerm_network_interface.vth-public-nic.ip_configuration
+}
+output "client_certificate" {
+  value     = azurerm_kubernetes_cluster.aks.kube_config[0].client_certificate
+  sensitive = true
+}
 
-# output "host" {
-#   value = azurerm_kubernetes_cluster.default.kube_config.0.host
-# }
+output "client_key" {
+  value     = azurerm_kubernetes_cluster.aks.kube_config[0].client_key
+  sensitive = true
+}
 
-# output "client_key" {
-#   value = azurerm_kubernetes_cluster.default.kube_config.0.client_key
-# }
+output "cluster_ca_certificate" {
+  value     = azurerm_kubernetes_cluster.aks.kube_config[0].cluster_ca_certificate
+  sensitive = true
+}
 
-# output "client_certificate" {
-#   value = azurerm_kubernetes_cluster.default.kube_config.0.client_certificate
-# }
+output "cluster_password" {
+  value     = azurerm_kubernetes_cluster.aks.kube_config[0].password
+  sensitive = true
+}
 
-# output "kube_config" {
-#   value = azurerm_kubernetes_cluster.default.kube_config_raw
-# }
+output "cluster_username" {
+  value     = azurerm_kubernetes_cluster.aks.kube_config[0].username
+  sensitive = true
+}
 
-# output "cluster_username" {
-#   value = azurerm_kubernetes_cluster.default.kube_config.0.username
-# }
+output "host" {
+  value     = azurerm_kubernetes_cluster.aks.kube_config[0].host
+  sensitive = true
+}
 
-# output "cluster_password" {
-#   value = azurerm_kubernetes_cluster.default.kube_config.0.password
-# }
+output "kube_config" {
+  value     = azurerm_kubernetes_cluster.aks.kube_config_raw
+  sensitive = true
+}
+
+output "resource_group_name" {
+  value = azurerm_resource_group.rg.name
+}
+
+output "vth_mgmt_public_ip" {
+  value = azurerm_network_interface.vth-mgmt.ip_configuration
+}

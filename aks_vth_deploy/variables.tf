@@ -1,45 +1,34 @@
-# variable "subscription_id" {
-#     description = "Azure Tenant Subscription ID"
-#     type = string
-#     default = "####"
-# }
-# variable "client_id" {
-#     description = "Service Principal App ID"
-#     type = string
-#     default = "####"
-# }
-# variable "client_secret" {
-#     description = "Service Principal Password"
-#     type = string
-#     default = "####"
-# }
-# variable "tenant_id" {
-#     description = "Azure Tenant ID"
-#     type = string
-#     default = "####"
-# }
+# The following two variable declarations are placeholder references.
+# Set the values for these variable in terraform.tfvars
+variable "aks_service_principal_app_id" {
+  default = ""
+}
+variable "aks_service_principal_client_secret" {
+  default = ""
+}
+
 variable "resource_group_name" {
   type = string
   description = "Resource Group name in Microsoft Azure"
-  default = "####"
+  default = "<your values here>"
 }
 
 variable "prod_resource_group_name" {
   type = string
   description = "Storage Account Resource Group Name"
-  default = "####"
+  default = "<your values here>"
 }
 
 variable "location" {
   type = string
   description = "Resources location in Microsoft Azure"
-  default = "westus"
+  default = "<your values here>" # Example: "westus"
 }
 
 variable "cluster_name" {
   type = string
   description = "AKS name in Microsoft Azure"
-  default = "####"
+  default = "<your values here>"
 }
 
 variable "kubernetes_version" {
@@ -68,20 +57,22 @@ variable "project" {
   description = "A10 Cloud Demo"
   # description = "Name of the project deployment."
   type = string
-  default = "####"
-}
-variable "azs" {
-  description = "The number of AZs."
-  type        = number
-  default     = 2
+  default = "<your values here>" # Example: "A10CloudDemo"
 }
 variable "vth_admin_user" {
   description = "A10 vthunder Admin username"
   type = string
-  default = "####"
+  default = "<your values here>" # Example: "admin"
 }
 variable "vth_admin_pass" {
   description = "A10 vThunder Admin Password"
   type = string
-  default = "####"
+  default = "<your values here>" # Example: "a10"
+  sensitive = true
+}
+variable "vth_mgmt_ip" {
+  description = "A10 vThunder Management Public IP"
+  type = string
+  default = "<your values here>"
+  sensitive = true
 }

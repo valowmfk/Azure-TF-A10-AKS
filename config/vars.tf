@@ -8,23 +8,29 @@
 variable "vth_admin_user" {
   description = "A10 vthunder Admin username"
   type = string
-  default = "admin"
+  default = "<your values here>" # Example: "admin"
 }
 variable "vth_admin_pass" {
   description = "A10 vThunder Admin Password"
   type = string
-  default = "a10"
+  default = "<your values here>" # Example: "a10"
 }
 variable "vth_mgmt_ip" {
   description = "A10 vThunder Management Public IP"
   type = string
-  default = "####"
+  default = "<your values here>"
 }
 variable "vth_public_ip" {
   description = "Public facing Interface IP"
   type = string
   default = "10.0.11.4"
 }
+variable "vth_private_ip" {
+  description = "Private NIC Interface IP"
+  type        = string
+  default     = "10.0.101.4"
+}
+
 variable "thunder_vip" {
   description = "VIP IP for vThunder in AWS"
   type = string

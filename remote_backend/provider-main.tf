@@ -5,10 +5,10 @@ terraform {
       
     # }
   backend "azurerm" {
-    resource_group_name  = ""
-    storage_account_name = ""
-    container_name       = ""
-    key                  = ""
+    resource_group_name  = "a10se-prod-rg"
+    storage_account_name = "a10setfhdd"
+    container_name       = "core-tfstate"
+    key                  = "core.secloud.tfstate"
   }
 }
 # Configure the Azure provider

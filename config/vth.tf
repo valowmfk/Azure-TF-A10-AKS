@@ -38,7 +38,7 @@ resource "thunder_virtual_server" "ws-vip" {
   ip_address = var.thunder_vip
   port_list {
     port_number = 80
-    protocol = "http"
+    protocol = "tcp"
   }
 }
 #
@@ -47,7 +47,7 @@ resource "thunder_virtual_server" "ws-vip" {
 resource "thunder_glm" "glm1" {
   use_mgmt_port   = 1
   enable_requests = 1
-  token           = "####"
+  token           = "<your values here>"
    depends_on = [
     thunder_ip_dns_primary.dns1
   ]
@@ -70,7 +70,6 @@ resource "thunder_interface_ethernet" "eth1" {
   action = "enable"
   ip {
     address_list {
-      # ipv4_address = "10.0.11.11"
       ipv4_address = var.vth_public_ip
       ipv4_netmask = "/24"
     }
@@ -82,8 +81,16 @@ resource "thunder_interface_ethernet" "eth2" {
   action = "enable"
   ip {
     address_list {
-      ipv4_address = "10.0.101.4"
+      ipv4_address = var.vth_private_ip
       ipv4_netmask = "/24"
     }
+  }
+}
+resource "thunder_ip_route_rib" "default" {
+  ip_dest_addr = "0.0.0.0"
+  ip_mask = "/0"
+
+  ip_nexthop_ipv4 {
+    ip_next_hop = "10.0.11.1"
   }
 }
