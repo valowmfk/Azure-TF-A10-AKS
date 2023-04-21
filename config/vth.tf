@@ -38,7 +38,7 @@ resource "thunder_virtual_server" "ws-vip" {
   ip_address = var.thunder_vip
   port_list {
     port_number = 80
-    protocol = "tcp"
+    protocol = "http"
   }
 }
 #
