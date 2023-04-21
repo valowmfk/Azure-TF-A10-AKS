@@ -8,6 +8,6 @@ Terraform Deployment for A10 vThunder and AKS
 
 The remote_backend directory is a terraform to create your backend terraform state storage, accounts, etc. This is recommended for teams that are running terraform against your environment from multiple sources.
 
-Key values have been replaced with "<your values here>"
+Key values have been replaced with ""<your values here>""
 
 Please contact seclouddemo@a10networks.com with any questions.
