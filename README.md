@@ -10,4 +10,7 @@ The remote_backend directory is a terraform to create your backend terraform sta
 
 Key values have been replaced with -your values here-
 
+Azure CLI configuration prerequisists must be met. Once the environment is deployed (AKS and vThunder) you'll need to run this command:
+az aks get-credentials --resource-group !!!name!!! --name !!!name!!! --admin
+
 Please contact seclouddemo@a10networks.com with any questions.
